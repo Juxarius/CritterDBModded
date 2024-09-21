@@ -1,6 +1,6 @@
 angular.module('myApp').factory("TextUtils", function() {
 
-  const lowercaseTitleWords = {"a":true,"an":true,"the":true,"for":true,"and":true,"nor":true,"but":true,"or":true,"yet":true,"so":true,"at":true,"around":true,"by":true,"after":true,"along":true,"for":true,"from":true,"of":true,"on":true,"to":true,"with":true,"without":true};
+  const lowercaseTitleWords = ["a", "an", "the", "for", "and", "nor", "but", "or", "yet", "so", "at", "around", "by", "after", "along", "for", "from", "of", "on", "to", "with", "without"];
 
   class TextUtils {
 
@@ -38,15 +38,15 @@ angular.module('myApp').factory("TextUtils", function() {
     }
 
     getTitleCase(sentence) {
-      function shouldCapitalizeWord(word,index,numWords) {
-        if (index === 0 || index === (numWords-1))
-          return true;
-        return lowercaseTitleWords[word] ? false : true;
+      var splitSentence = sentence.split(" ");
+      for (var i = 0; i < splitSentence.length; i++) {
+        if (!lowercaseTitleWords.includes(splitSentence[i].toLowerCase()) || i == 0 || i == splitSentence.length - 1 ) {
+          splitSentence[i] = this.capitalizeFirstLetter(splitSentence[i]);
+        } else {
+          splitSentence[i] = splitSentence[i].toLowerCase();
+        }
       }
-
-      return sentence
-        ? sentence.split(' ').map((word, index, wordList) => shouldCapitalizeWord(word, index, wordList.length) ? this.capitalizeFirstLetter(word) : word.toLowerCase()).join(' ')
-        : sentence;
+      return splitSentence.join(" ");
     }
 
     getCommaSeparatedList(items) {

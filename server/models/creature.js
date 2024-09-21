@@ -144,6 +144,13 @@ var StatBlock = new mongoose.Schema(
             type: Number,
             default: 1
         },
+        useHitDie: {
+            type: Boolean,
+            default: false
+        },
+        flatHp: {
+            type: Number
+        },
         speed: {
             type: String,
             default: ""

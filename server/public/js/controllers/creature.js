@@ -372,6 +372,8 @@ var defaultCreature = {
 		alignment: "Unaligned",
 		armorClass: 10,
 		numHitDie: 1,
+		useHitDie: false,
+		flatHp: 10,
 		proficiencyBonus: 0,
 		speed: "30 ft.",
 		abilityScores: {
@@ -406,12 +408,12 @@ var defaultCreature = {
 //don't load controller until we've gotten the data from the server
 creatureCtrl.resolve = {
 			creature: ['Creature',
-								'Bestiary',
-								'$q',
-								'$route',
-								'Auth',
-								'$location',
-								function(Creature, Bestiary, $q, $route, Auth, $location){
+						'Bestiary',
+						'$q',
+						'$route',
+						'Auth',
+						'$location',
+						function(Creature, Bestiary, $q, $route, Auth, $location){
 				var deferred = $q.defer();
 				const rejectAndReroute = function() {
 					$location.path('/login');

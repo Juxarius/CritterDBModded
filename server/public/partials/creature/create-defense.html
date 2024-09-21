@@ -1,13 +1,21 @@
 <form name="defenseForm" class="defense-form">
   <section layout="row" flex style="height:68px">
-  	<md-input-container flex>
-  	  <label>Number of Hit Die</label>
-  	  <input ng-model="creature.stats.numHitDie" min="1" type="number"/>
-  	</md-input-container>
-    <md-input-container flex>
-      <label>Size of Hit Die</label>
-      <input ng-model="creature.stats.hitDieSize" min="1" type="number"/>
-    </md-input-container>
+    <div ng-if="creature.stats.useHitDie">
+      <md-input-container flex>
+        <label>Number of Hit Die</label>
+        <input ng-model="creature.stats.numHitDie" min="1" type="number"/>
+      </md-input-container>
+      <md-input-container flex>
+        <label>Size of Hit Die</label>
+        <input ng-model="creature.stats.hitDieSize" min="1" type="number"/>
+      </md-input-container>
+    </div>
+    <div ng-if="!creature.stats.useHitDie">
+      <md-input-container flex>
+        <label>Hit Points</label>
+        <input ng-model="creature.stats.flatHp" min="1" type="number"/>
+      </md-input-container>
+    </div>
     <md-autocomplete flex
         md-autoselect
         md-search-text="creature.stats.armorType"
@@ -23,7 +31,12 @@
   	  <input ng-model="creature.stats.armorClass" type="number"/>
   	</md-input-container>
   </section>
-
+  <md-checkbox ng-model="creature.stats.useHitDie" aria-label="Use Hit Die" style="display:flex;align-items:center;">
+    Use Hit Die
+    <md-tooltip md-direction="down">
+      Selecting this option will use Hit Dies to represent Hitpoints instead
+    </md-tooltip>
+  </md-checkbox>
 
 	<md-chips ng-model="creature.stats.damageVulnerabilities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete

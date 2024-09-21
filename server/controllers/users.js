@@ -16,7 +16,7 @@ var sendWelcomeEmail = function(emailAddress){
         text: 'Thanks for joining Critter DB! I hope it helps you with all your critter management needs. Please send any feedback to me at haswellrd@gmail.com or on Github at https://github.com/haswellr/CritterDB.\n\nThanks,\nRyan'
     };
     try {
-        emailController.sendEmail(mailOptions);
+        // emailController.sendEmail(mailOptions);
     } catch (error) {
         console.log(error);
     }
@@ -30,7 +30,8 @@ var sendPassword = function(emailAddress,passwordUrl){
         text: 'You lost something! Follow this link to set your new password: ' + passwordUrl
     };
     try {
-        emailController.sendEmail(mailOptions);
+        console.log(passwordUrl)
+        // emailController.sendEmail(mailOptions);
     } catch (error) {
         console.log(error);
     }

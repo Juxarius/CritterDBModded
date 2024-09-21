@@ -46,9 +46,9 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 			var sign = "+";
 			if(creature.stats.extraHealthFromConstitution<0)
 				sign = "–";
-			creature.stats.hitPointsStr = creature.stats.hitPoints + " " +
+			creature.stats.hitPointsStr = (creature.stats.hasOwnProperty("useHitDie") && creature.stats.useHitDie) ? creature.stats.hitPoints + " " +
 					"(" + creature.stats.numHitDie + "d" + creature.stats.hitDieSize + " " +
-					sign + " " + Math.abs(creature.stats.extraHealthFromConstitution) + ")";
+					sign + " " + Math.abs(creature.stats.extraHealthFromConstitution) + ")" : creature.stats.flatHp;
 		}
 		//make ability descriptions html safe so we can use italics and other markup
 		if(creature.stats && creature.stats.additionalAbilities){
