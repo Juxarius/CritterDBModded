@@ -118,7 +118,7 @@
       <div class="property-line" ng-if="creature.stats.damageVulnerabilities.length>0">
         <h4>Damage Vulnerabilities</h4>
         <p>
-          <span ng-repeat="vulnerability in creature.stats.damageVulnerabilities"><span ng-if="$index>0">, </span>{{vulnerability.toLowerCase()}}</span>
+          <span ng-repeat="vulnerability in creature.stats.damageVulnerabilities"><span ng-if="$index>0">, </span>{{vulnerability}}</span>
         </p>
       </div>
       <div class="property-line" ng-if="creature.stats.damageResistances.length>0">
@@ -173,6 +173,13 @@
     <h3 ng-if="creature.stats.actions.length>0">Actions</h3>
 
     <div class="property-block" ng-repeat="action in creature.stats.actions">
+      <h4>{{action.name}}.</h4>
+      <p ng-bind-html="action.descriptionHtml"></p>
+    </div>
+
+    <h3 ng-if="creature.stats.bonusActions.length>0">Bonus Actions</h3>
+
+    <div class="property-block" ng-repeat="action in creature.stats.bonusActions">
       <h4>{{action.name}}.</h4>
       <p ng-bind-html="action.descriptionHtml"></p>
     </div>

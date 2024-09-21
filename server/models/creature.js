@@ -181,6 +181,7 @@ var StatBlock = new mongoose.Schema(
         },
         additionalAbilities: [Ability],
         actions: [Ability],
+        bonusActions: [Ability],
         reactions: [Ability],
         legendaryActionsPerRound: {
             type: Number,

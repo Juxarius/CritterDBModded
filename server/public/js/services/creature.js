@@ -63,6 +63,12 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 				ability.descriptionHtml = $sce.trustAsHtml(ability.description);
 			}
 		}
+		if(creature.stats && creature.stats.bonusActions){
+			for(var index in creature.stats.bonusActions){
+				var ability = creature.stats.bonusActions[index];
+				ability.descriptionHtml = $sce.trustAsHtml(ability.description);
+			}
+		}
 		if(creature.stats && creature.stats.reactions){
 			for(var index in creature.stats.reactions){
 				var ability = creature.stats.reactions[index];

@@ -399,6 +399,7 @@ var defaultCreature = {
 			name: "Shortsword",
 			description: "<i>Melee Weapon Attack:</i> +0 to hit, reach 5 ft., one target. <i>Hit:</i> 3 (1d6 + 0) piercing damage."
 		}],
+		bonusActions: [],
 		reactions: [],
 		legendaryActions: [],
 		legendaryActionsPerRound: 3
